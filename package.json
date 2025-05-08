@@ -1,0 +1,24 @@
+{
+  "name": "do-not-click-lambda",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"nope\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kindohm/do-not-click-lambda.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kindohm/do-not-click-lambda/issues"
+  },
+  "homepage": "https://github.com/kindohm/do-not-click-lambda#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.15.16",
+    "typescript": "^5.8.3"
+  }
+}

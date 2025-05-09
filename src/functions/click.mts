@@ -24,7 +24,7 @@ export default async (req: Request, context: Context) => {
 
   const docRef = await addDoc(collection(db, "clicks"), {
     fingerprint: payload.fingerprint,
-    timestamp: new Date(),
+    date: (new Date()).toISOString(),
     response,
   });
 

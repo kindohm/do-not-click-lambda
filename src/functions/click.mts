@@ -1,6 +1,7 @@
 import type { Context } from "@netlify/functions";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { randInt } from "../util";
 
 const firebaseConfig = JSON.parse(process.env.FB_CONFIG ?? "{}");
 const app = initializeApp(firebaseConfig);
@@ -13,12 +14,6 @@ const responses = [
   `You weren't supposed to click the button.`,
   `STAHHHHP!`,
 ];
-
-const randInt = (min: number, max: number) => {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
-};
 
 export default async (req: Request, context: Context) => {
   if (req.method === "OPTIONS") {
@@ -46,20 +41,3 @@ export default async (req: Request, context: Context) => {
     },
   });
 };
-
-/* CORS
-
-import type {Config, Context} from '@netlify/edge-functions'
-export default async (request : Request, context : Context) => {
-  const response = await context.next()
-  return new Response(response.body, {
-    headers: {
-       'access-control-allow-origin': '*'
-    }
-  })
-}
-export const config : Config = {
-  path: '/*'
-}
-
-*/

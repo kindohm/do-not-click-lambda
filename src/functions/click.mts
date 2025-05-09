@@ -2,18 +2,11 @@ import type { Context } from "@netlify/functions";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { randInt } from "../util";
+import { responses } from "../responses";
 
 const firebaseConfig = JSON.parse(process.env.FB_CONFIG ?? "{}");
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-const responses = [
-  `You weren't supposed to do that.`,
-  `Please do not click the button again.`,
-  `You clicked the button. You rebel.`,
-  `You weren't supposed to click the button.`,
-  `STAHHHHP!`,
-];
 
 export default async (req: Request, context: Context) => {
   if (req.method === "OPTIONS") {

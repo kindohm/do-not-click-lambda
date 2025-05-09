@@ -1,6 +1,6 @@
 import type { Context } from "@netlify/functions";
-import {words} from "./../words";
 import { randInt } from "../util";
+import { words } from "../words";
 
 export default async (req: Request, context: Context) => {
   if (req.method === "OPTIONS") {

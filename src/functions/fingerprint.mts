@@ -1,5 +1,5 @@
 import type { Context } from "@netlify/functions";
-import words from "./../words";
+import {words} from "./../words";
 import { randInt } from "../util";
 
 export default async (req: Request, context: Context) => {

@@ -19,9 +19,10 @@ export default async (req: Request, context: Context) => {
     })
     .join("-");
 
-  return new Response(fingerprint, {
-    headers: {
-      "access-control-allow-origin": "*",
-    },
-  });
+  const res = new Response(fingerprint);
+  res.headers.set("Access-Control-Allow-Origin", "*");
+  res.headers.append("Access-Control-Allow-Headers", "*");
+  res.headers.append("Access-Control-Allow-Methods", "*");
+
+  return res;
 };

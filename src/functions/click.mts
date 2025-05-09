@@ -21,22 +21,31 @@ const randInt = (min: number, max: number) => {
 };
 
 export default async (req: Request, context: Context) => {
+  if (req.method === "OPTIONS") {
+    const res = new Response();
+
+    res.headers.set("Access-Control-Allow-Origin", "*");
+    res.headers.append("Access-Control-Allow-Headers", "*");
+    res.headers.append("Access-Control-Allow-Methods", "*");
+
+    return res;
+  }
+
   const payload = await req.json();
   const response = responses[randInt(0, responses.length - 1)];
 
   const docRef = await addDoc(collection(db, "clicks"), {
     fingerprint: payload.fingerprint,
     timestamp: new Date(),
-    response
+    response,
   });
 
   return new Response(response, {
     headers: {
-       'access-control-allow-origin': '*'
-    }
+      "access-control-allow-origin": "*",
+    },
   });
 };
-
 
 /* CORS
 
